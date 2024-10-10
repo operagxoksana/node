@@ -90,9 +90,8 @@ jobs:
             FEATURES=${{ matrix.features }}
           platforms: ${{ matrix.arch }}
   nethermind:
-    runs-on: ubuntu-latest
+    runs-on: larger-runner
     strategy:
-      fail-fast: false
       matrix:
         platform: [linux/amd64, linux/arm64]
     steps:

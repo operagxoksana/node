@@ -28,7 +28,7 @@ RUN bash -c '[ "$(git rev-parse HEAD)" = "$COMMIT" ]'
 RUN TARGETARCH=${TARGETARCH#linux/} && \
     arch=$([ "$TARGETARCH" = "amd64" ] && echo "x64" || echo "$TARGETARCH") && \
     echo "Using architecture: $arch" && \
-    dotnet publish src/Nethermind/Nethermind.Runner -c $BUILD_CONFIG -a $arch -o /publish --sc false
+    dotnet publish src/Nethermind/Nethermind.Runner -c $BUILD_CONFIG -a $arch -maxcpucount 1 -o /publish --sc false
 
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-noble
